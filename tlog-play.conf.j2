@@ -1,0 +1,25 @@
+//
+// Tlog-play system-wide configuration. See tlog-play.conf(5) for details.
+// This file uses JSON format with both C and C++ comments allowed.
+//
+{
+    // The type of "log reader" to use for retrieving log messages. The chosen
+    // reader needs to be configured using its own dedicated parameters.
+    "reader" : "{{ tlog_reader }}",
+
+    // File reader parameters
+    "file": {
+        // The "file" reader log file path.
+        "path" : "{{ tlog_logfile }}"
+    },
+
+    // ElasticSearch reader parameters
+    "es": {
+        // The base URL to request ElasticSearch through. Should not
+        // contain the query (?...) or fragment (#...) parts.
+        "baseurl" : "http://{{ es_ip }}:{{ es_port }}/tlog-rsyslog/tlog/_search",
+
+        // The query string to send to ElasticSearch
+        // "query" : ""
+    }
+}

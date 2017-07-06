@@ -1,0 +1,10 @@
+[nkondras-tlog]
+name=Copr repo for tlog owned by nkondras
+baseurl=http://coprbe.devel.redhat.com/results/nkondras/tlog/rhel-7-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=0
+gpgkey=https://coprbe.devel.redhat.com/results/nkondras/tlog/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1

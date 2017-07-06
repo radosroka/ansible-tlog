@@ -1,0 +1,54 @@
+//
+// Tlog-rec system-wide configuration. See tlog-rec.conf(5) for details.
+// This file uses JSON format with both C and C++ comments allowed.
+//
+{
+    // The path to the shell executable that should be spawned.
+    // "shell" : "/bin/bash",
+
+    // A message which will be printed before starting
+    // recording and the user shell. Can be used to warn
+    // the user that the session is recorded.
+    // "notice" : "\nATTENTION! Your session is being recorded!\n\n",
+
+    // The data which does not exceed maximum payload
+    // stays in memory and is not logged until this number of
+    // seconds elapses.
+    // "latency" : 10,
+
+    // Maximum encoded data (payload) size per message, bytes.
+    // As soon as payload exceeds this number of bytes,
+    // it is formatted into a message and logged.
+    // "payload" : 2048,
+
+    // Logged data set parameters
+    "log": {
+        // If specified as true, user input is logged.
+        // "input" : false,
+
+        // If specified as true, terminal output is logged.
+        // "output" : true,
+
+        // If specified as true, terminal window size changes are logged.
+        // "window" : true
+    },
+
+    // The type of "log writer" to use for logging. The writer needs
+    // to be configured using its dedicated parameters.
+    "writer" : "{{ tlog_writer }}",
+
+    // File writer parameters
+    "file": {
+        // The "file" writer log file path.
+        "path" : "{{ tlog_logfile }}"
+    },
+
+    // Syslog writer parameters
+    "syslog": {
+        // Syslog facility the "syslog" writer should use for the messages.
+        "facility" : "{{ tlog_facility }}",
+
+        // Syslog priority the "syslog" writer should use for the messages.
+        "priority" : "{{ tlog_priority }}"
+    }
+}

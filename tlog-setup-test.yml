@@ -1,0 +1,51 @@
+---
+- hosts: tlog-machine
+
+  vars:
+    # could be file/syslog/es
+    tlog_writer: syslog
+    tlog_logfile: /var/log/tlog.log
+    tlog_priority: info
+    tlog_facility: local5
+
+    tlog_reader: file
+
+    es_forward: false
+    # set elasticsearch ip and port
+    es_ip: 192.168.122.250
+    es_port: 9200
+
+  tasks:
+# tlog part
+
+  - name: setup repofile
+    copy: src=./tlog.repo dest=/etc/yum.repos.d/tlog.repo
+
+  - name: installing tlog
+    yum: name=tlog state=latest
+
+  - name: copying tlog-rec.conf
+    template: src=tlog-rec.conf.j2 dest=/etc/tlog/tlog-rec.conf
+
+  - name: copying tlog-play.conf
+    template: src=tlog-play.conf.j2 dest=/etc/tlog/tlog-play.conf
+   
+# selinux port
+  - name: install policycoreutils-python
+    yum: name=policycoreutils-python state=latest
+
+  - name: enable port {{ es_port }}
+    shell: semanage port -a -t syslogd_port_t -p tcp {{ es_port }} || true 
+
+# rsyslog part
+  - name: installing rsyslog
+    yum: name=rsyslog state=latest
+
+  - name: installing rsyslog-elasticsearch
+    yum: name=rsyslog-elasticsearch state=latest
+
+  - name: write the rsyslog config file
+    template: src=rsyslog.conf.j2 dest=/etc/rsyslog.conf
+
+  - name: restart the rsyslog service
+    service: name=rsyslog state=restarted enabled=yes
