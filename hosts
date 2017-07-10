@@ -44,5 +44,5 @@
 
 #set where tlog should be installed
 [tlog-machine]
-192.168.122.241
+127.0.0.1
 
