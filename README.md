@@ -9,3 +9,6 @@ Ansible playbook for tlog.
 ```{r, engine='bash', count_lines}
 ansible-playbook -i hosts -u root tlog-setup-test.yml
 ```
+Works with RHEL7.4 and Centos7.
+
+It is important to check rsyslog version on Centos. There is new rsyslog v8 in RHEL but it doesn't have to be included in Centos now (10.7.2017).
