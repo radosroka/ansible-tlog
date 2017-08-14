@@ -1,0 +1,15 @@
+galaxy_info:
+  author: "Radovan Sroka"
+  description: This is ansible tlog role
+  company: Redhat Inc.
+  license: GPLv3
+  min_ansible_version: 1.2
+
+  platforms:
+    - name: Centos
+      versions:
+        - 7
+
+  galaxy_tags: []
+
+  dependencies: []

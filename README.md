@@ -1,14 +1,41 @@
-# tlog-ansible-setup
-Ansible playbook for tlog.
+Role Name
+=========
 
-1. Set proper variables in hosts and tlog-setup-test.yml.
-2. Set ssh certificate for tlog machine(for ansible).
+This is ansible tlog role. See https://github.com/Scribery/tlog.
 
-3. Run:
+This project is under development.
+ReadMe will be updated later.
 
-```{r, engine='bash', count_lines}
-ansible-playbook -i hosts -u root tlog-setup-test.yml
-```
-Works with RHEL7.4 and Centos7.
+Requirements
+------------
 
-It is important to check rsyslog version on Centos. There is new rsyslog v8 in RHEL but it doesn't have to be included in Centos now (10.7.2017).
+Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+
+Role Variables
+--------------
+
+A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+
+Dependencies
+------------
+
+A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+
+Example Playbook
+----------------
+
+Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+
+    - hosts: servers
+      roles:
+         - { role: username.rolename, x: 42 }
+
+License
+-------
+
+GPL3
+
+Author Information
+------------------
+
+An optional section for the role authors to include contact information, or a website (HTML is not allowed).

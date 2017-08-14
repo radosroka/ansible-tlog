@@ -1,0 +1,16 @@
+---
+# defaults file for ansible-tlog
+  arch: x86_64
+  source_dir: tlog-source
+  # could be file/syslog/es
+  tlog_writer: syslog
+  tlog_logfile: /var/log/tlog.log
+  tlog_priority: info
+  tlog_facility: local5
+
+  tlog_reader: file
+
+  es_forward: true
+  # set elasticsearch ip and port
+  es_ip: 192.168.122.250
+  es_port: 9200
