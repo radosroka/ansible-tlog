@@ -1,7 +1,8 @@
 ---
 
-- name: install policycoreutils-python
-  yum: name=policycoreutils-python state=latest
-
 - name: enable port {{ es_port }}
-  shell: semanage port -a -t syslogd_port_t -p tcp {{ es_port }} || true
+  seport:
+    ports: "{{ es_port }}"
+    proto: tcp
+    setype: syslogd_port_t
+    state: present

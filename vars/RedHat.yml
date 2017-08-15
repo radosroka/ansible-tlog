@@ -1,0 +1,15 @@
+---
+# vars file for ansible-tlog
+
+redhat_pkg:
+  - git
+  - libtool
+  - autoconf
+  - automake
+  - json-c-devel
+  - systemd-devel
+  - libcurl-devel
+  - rpm-build
+  - rsyslog
+  - rsyslog-elasticsearch
+  - policycoreutils-python

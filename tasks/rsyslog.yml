@@ -1,11 +1,5 @@
 ---
 
-- name: installing rsyslog
-  yum: name=rsyslog state=latest
-
-- name: installing rsyslog-elasticsearch
-  yum: name=rsyslog-elasticsearch state=latest
-
 - name: write the rsyslog config file
   template: src=rsyslog.conf.j2 dest=/etc/rsyslog.conf
 

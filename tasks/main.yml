@@ -1,5 +1,18 @@
 ---
 # tasks file for ansible-tlog
+- name: Add the OS specific variables
+  include_vars: '{{ ansible_os_family }}.yml'
+
+- name: installing packages with yum
+  yum: name={{ item }} state=latest
+  with_items: "{{ redhat_pkg }}"
+  when: ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora'
+
+- name: installing packages with dnf
+  dnf: name={{ item }} state=latest
+  with_items: "{{ redhat_pkg }}"
+  when: ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora'
+
 - include: tlog.yml
 - include: selinux.yml
 - include: rsyslog.yml

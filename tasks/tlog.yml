@@ -1,29 +1,5 @@
 ---
 
-  - name: installing git
-    yum: name=git state=latest
-
-  - name: installing libtool
-    yum: name=libtool state=latest
-
-  - name: installing autoconf
-    yum: name=autoconf state=latest
-
-  - name: installing automake
-    yum: name=automake state=latest
-
-  - name: installing json-c-devel
-    yum: name=json-c-devel state=latest
-
-  - name: installing systemd-devel
-    yum: name=systemd-devel state=latest
-
-  - name: installing libcurl-devel
-    yum: name=libcurl-devel state=latest
-
-  - name: installing rpm-build
-    yum: name=rpm-build state=latest
-
   - name: clone tlog
     git:
       repo: https://github.com/Scribery/tlog.git
@@ -33,8 +9,8 @@
     shell: |
       cd /tmp/tlog-source
       autoreconf -i -f
-      ./configure --prefix=/usr --sysconfdir=/etc && make dist
-      rpmbuild -tb tlog-4.tar.gz
+      ./configure && make dist
+      rpmbuild -tb tlog-*.tar.gz
 
   - name: install tlog
     shell: yum install -y /root/rpmbuild/RPMS/{{ arch }}/tlog*

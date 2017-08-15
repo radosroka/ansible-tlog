@@ -14,3 +14,5 @@
   # set elasticsearch ip and port
   es_ip: 192.168.122.250
   es_port: 9200
+
+
