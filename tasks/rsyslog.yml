@@ -1,7 +1,7 @@
 ---
 
 - name: write the rsyslog config file
-  template: src=rsyslog.conf.j2 dest=/etc/rsyslog.conf
+  template: src=tlog-forward.conf.j2 dest=/etc/rsyslog.d/tlog-forward.conf
 
 - name: restart the rsyslog service
   service: name=rsyslog state=restarted enabled=yes

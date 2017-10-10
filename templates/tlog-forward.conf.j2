@@ -1,0 +1,39 @@
+
+{% if es_forward == true and tlog_writer == "syslog" %}
+module(load="omelasticsearch")
+{% endif %}
+
+
+#$MaxMessageSize 3k
+
+template(name="tlog" type="list") {
+	constant(value="{")
+	property(name="timegenerated"
+	outname="timestamp"
+	format="jsonf"
+	dateFormat="rfc3339")
+	constant(value=",")
+	property(name="msg"
+	regex.expression="{\\(.*\\)"
+	regex.submatch="1")
+	constant(value="\n")
+}
+
+if $programname == "tlog" then {
+{% if es_forward == true and tlog_writer == "syslog" %}
+	action(name="tlog-elasticsearch"
+		   type="omelasticsearch"
+		   server="{{ es_ip }}"
+		   serverport="{{ es_port }}"
+		   searchIndex="tlog-rsyslog"
+		   searchType="tlog"
+		   bulkmode="on"
+		   template="tlog")
+{% endif %}
+	action(name="tlog-file"
+		   type="omfile"
+		   file="{{ tlog_logfile }}"
+		   fileCreateMode="0600"
+		   template="tlog")
+	~
+}
