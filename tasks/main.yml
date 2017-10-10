@@ -13,6 +13,6 @@
   with_items: "{{ redhat_pkg }}"
   when: ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora'
 
-- include: tlog.yml
-- include: selinux.yml
-- include: rsyslog.yml
+- include_tasks: tlog.yml
+- include_tasks: selinux.yml
+- include_tasks: rsyslog.yml
