@@ -12,7 +12,5 @@
 
   es_forward: true
   # set elasticsearch ip and port
-  es_ip: 192.168.122.250
+  es_ip: 127.0.0.1
   es_port: 9200
-
-
