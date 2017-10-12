@@ -14,5 +14,9 @@
   when: ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora'
 
 - include_tasks: tlog.yml
+
 - include_tasks: selinux.yml
+  when: ansible_os_family == 'RedHat'
+
 - include_tasks: rsyslog.yml
+  when: tlog_writer == 'syslog' or es_forward == true

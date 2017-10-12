@@ -13,21 +13,21 @@ None
 Role Variables
 --------------
 
-Defaults:  
-* arch: x86_64  
+Defaults:
+* arch: x86_64
 * source_dir: tlog-source  
-* tlog_writer: syslog (could be file/syslog/es)  
-* tlog_logfile: /var/log/tlog.log  
-* tlog_priority: info  
+* tlog_writer: file (could be file/syslog/journal/es)
+* tlog_logfile: /var/log/tlog.log
+* tlog_priority: info
 * tlog_facility: local5
 
-* tlog_reader: file  
+* tlog_reader: file (could be file/journal/es)
 
-* es_forward: false  
+* es_forward: false
 
 #set elasticsearch ip and port
-* es_ip: 127.0.0.1  
-* es_port: 9200  
+* es_ip: 127.0.0.1
+* es_port: 9200
 
 Dependencies
 ------------

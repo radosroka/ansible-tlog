@@ -50,5 +50,11 @@
 
         // Syslog priority the "syslog" writer should use for the messages.
         "priority" : "{{ tlog_priority }}"
+    },
+
+    "journal": {
+    // Syslog-style priority the "journal" writer should use for the messages.
+        "priority" : "{{ tlog_priority }}"
     }
+
 }
