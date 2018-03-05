@@ -19,7 +19,7 @@ template(name="tlog" type="list") {
 	constant(value="\n")
 }
 
-if $programname == "tlog" then {
+if $programname == "tlog-rec-session" then {
 {% if es_forward == true and tlog_writer == "syslog" or tlog_writer == "journal" %}
 	action(name="tlog-elasticsearch"
 		   type="omelasticsearch"
